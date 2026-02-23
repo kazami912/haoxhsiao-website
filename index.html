@@ -1,0 +1,1484 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>嚎哮排演 HaoxHsiaoTroupe | 全台灣最接近頂尖（自稱）的喜劇團體</title>
+<meta name="description" content="嚎哮排演，台灣頂尖喜劇劇團。說好笑的故事、作好玩的戲。2025國藝會TAIWAN TOP演藝團隊。">
+<meta property="og:title" content="嚎哮排演 HaoxHsiaoTroupe">
+<meta property="og:description" content="全台灣最接近頂尖（自稱）的喜劇團體">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ===== CSS RESET & BASE ===== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: 'Noto Sans TC', 'Space Grotesk', sans-serif;
+  background: #0a0a0a;
+  color: #f0f0f0;
+  overflow-x: hidden;
+  cursor: default;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+/* ===== CUSTOM CURSOR SPOTLIGHT ===== */
+.cursor-spotlight {
+  position: fixed;
+  width: 300px; height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,90,0,0.08) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s;
+}
+
+/* ===== NAVIGATION ===== */
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 1rem 2rem;
+  display: flex; justify-content: space-between; align-items: center;
+  background: rgba(10,10,10,0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,90,0,0.15);
+  transition: all 0.4s;
+}
+nav.scrolled { padding: 0.6rem 2rem; background: rgba(10,10,10,0.95); }
+.nav-logo {
+  font-size: 1.4rem; font-weight: 900;
+  letter-spacing: 2px;
+  background: linear-gradient(135deg, #ff5a00, #ffcc00);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  font-size: 0.9rem; font-weight: 700; letter-spacing: 1px;
+  position: relative; transition: color 0.3s;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -4px; left: 0;
+  width: 0; height: 2px; background: #ff5a00;
+  transition: width 0.3s;
+}
+.nav-links a:hover { color: #ff5a00; }
+.nav-links a:hover::after { width: 100%; }
+.hamburger {
+  display: none; flex-direction: column; gap: 5px; cursor: pointer;
+  background: none; border: none;
+}
+.hamburger span {
+  width: 28px; height: 2px; background: #f0f0f0;
+  transition: all 0.3s;
+}
+.mobile-menu {
+  display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(10,10,10,0.98); z-index: 999;
+  flex-direction: column; justify-content: center; align-items: center; gap: 2rem;
+}
+.mobile-menu.active { display: flex; }
+.mobile-menu a {
+  font-size: 1.5rem; font-weight: 900;
+  transition: color 0.3s;
+}
+.mobile-menu a:hover { color: #ff5a00; }
+
+/* ===== HERO SECTION ===== */
+#hero {
+  position: relative;
+  height: 100vh; min-height: 600px;
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  text-align: center;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(255,90,0,0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(255,204,0,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(255,60,0,0.06) 0%, transparent 50%),
+    #0a0a0a;
+}
+.hero-curtain-left, .hero-curtain-right {
+  position: absolute; top: 0; bottom: 0; width: 120px;
+  z-index: 1;
+}
+.hero-curtain-left {
+  left: 0;
+  background: linear-gradient(90deg, rgba(139,0,0,0.35) 0%, transparent 100%);
+}
+.hero-curtain-right {
+  right: 0;
+  background: linear-gradient(-90deg, rgba(139,0,0,0.35) 0%, transparent 100%);
+}
+.hero-content { position: relative; z-index: 2; padding: 0 1rem; }
+.hero-badge {
+  display: inline-block;
+  padding: 0.4rem 1.2rem;
+  border: 1px solid rgba(255,204,0,0.6);
+  border-radius: 50px;
+  font-size: 0.8rem; font-weight: 700;
+  color: #ffcc00;
+  letter-spacing: 2px;
+  margin-bottom: 1.5rem;
+  animation: fadeInDown 1s ease-out 0.2s both;
+}
+.hero-title-zh {
+  font-size: clamp(3rem, 10vw, 8rem);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: 8px;
+  background: linear-gradient(135deg, #fff 0%, #ff5a00 50%, #ffcc00 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: fadeInUp 1s ease-out 0.4s both;
+}
+.hero-title-en {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(0.8rem, 2vw, 1.2rem);
+  font-weight: 400;
+  letter-spacing: 12px;
+  color: rgba(255,255,255,0.4);
+  margin-top: 0.5rem;
+  animation: fadeInUp 1s ease-out 0.6s both;
+}
+.hero-tagline {
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  font-weight: 400;
+  color: rgba(255,255,255,0.7);
+  margin-top: 2rem;
+  animation: fadeInUp 1s ease-out 0.8s both;
+}
+.hero-tagline em {
+  font-style: normal;
+  color: #ffcc00;
+  border-bottom: 2px solid rgba(255,204,0,0.4);
+}
+.hero-cta {
+  display: inline-flex; gap: 1rem;
+  margin-top: 2.5rem;
+  animation: fadeInUp 1s ease-out 1s both;
+}
+.btn {
+  padding: 0.9rem 2rem;
+  border-radius: 50px;
+  font-size: 0.95rem; font-weight: 700;
+  letter-spacing: 1px;
+  transition: all 0.3s;
+  cursor: pointer;
+  border: none;
+}
+.btn-primary {
+  background: linear-gradient(135deg, #ff5a00, #ff8c00);
+  color: #fff;
+  box-shadow: 0 4px 25px rgba(255,90,0,0.3);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 35px rgba(255,90,0,0.5);
+}
+.btn-outline {
+  background: transparent;
+  border: 2px solid rgba(255,255,255,0.3);
+  color: #fff;
+}
+.btn-outline:hover {
+  border-color: #ff5a00;
+  color: #ff5a00;
+  transform: translateY(-2px);
+}
+.hero-scroll-hint {
+  position: absolute; bottom: 2rem; left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  animation: bounce 2s infinite;
+}
+.hero-scroll-hint span {
+  display: block; width: 24px; height: 40px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-radius: 12px;
+  position: relative;
+}
+.hero-scroll-hint span::after {
+  content: '';
+  position: absolute; top: 6px; left: 50%;
+  transform: translateX(-50%);
+  width: 4px; height: 8px;
+  background: #ff5a00;
+  border-radius: 2px;
+  animation: scrollDot 2s infinite;
+}
+
+/* ===== SECTION BASE ===== */
+section { padding: 6rem 2rem; position: relative; }
+.section-container { max-width: 1200px; margin: 0 auto; }
+.section-header { text-align: center; margin-bottom: 4rem; }
+.section-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.8rem; font-weight: 700;
+  letter-spacing: 4px; color: #ff5a00;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+.section-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 900;
+  line-height: 1.2;
+}
+.section-divider {
+  width: 60px; height: 3px;
+  background: linear-gradient(90deg, #ff5a00, #ffcc00);
+  margin: 1.5rem auto 0;
+  border-radius: 2px;
+}
+
+/* ===== ABOUT SECTION ===== */
+#about { background: linear-gradient(180deg, #0a0a0a 0%, #111 100%); }
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+.about-story h3 {
+  font-size: 1.5rem; margin-bottom: 1rem; color: #ff5a00;
+}
+.about-story p {
+  font-size: 1rem; line-height: 1.9;
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 1.5rem;
+}
+.principles {
+  display: flex; flex-direction: column; gap: 1.5rem;
+}
+.principle-card {
+  padding: 1.5rem 2rem;
+  background: rgba(255,90,0,0.05);
+  border-left: 3px solid #ff5a00;
+  border-radius: 0 12px 12px 0;
+  transition: all 0.3s;
+}
+.principle-card:hover {
+  background: rgba(255,90,0,0.1);
+  transform: translateX(8px);
+}
+.principle-num {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 2rem; font-weight: 700;
+  color: rgba(255,90,0,0.3);
+  line-height: 1;
+}
+.principle-text {
+  font-size: 1.1rem; font-weight: 700; margin-top: 0.3rem;
+}
+
+/* ===== STYLE FEATURES ===== */
+.style-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+.style-card {
+  padding: 2rem;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  text-align: center;
+  transition: all 0.4s;
+  position: relative;
+  overflow: hidden;
+}
+.style-card::before {
+  content: '';
+  position: absolute; top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 60px; height: 3px;
+  background: linear-gradient(90deg, #ff5a00, #ffcc00);
+  border-radius: 0 0 4px 4px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.style-card:hover { border-color: rgba(255,90,0,0.3); transform: translateY(-4px); }
+.style-card:hover::before { opacity: 1; }
+.style-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+.style-card h4 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+.style-card p {
+  font-size: 0.85rem; color: rgba(255,255,255,0.55);
+  line-height: 1.6;
+}
+
+/* ===== TIMELINE ===== */
+#timeline {
+  background: #0a0a0a;
+  padding: 6rem 2rem;
+}
+.timeline-track {
+  position: relative;
+  max-width: 800px; margin: 0 auto;
+}
+.timeline-track::before {
+  content: '';
+  position: absolute; left: 50%; top: 0; bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, #ff5a00, rgba(255,90,0,0.1));
+  transform: translateX(-50%);
+}
+.timeline-item {
+  position: relative;
+  padding: 1.5rem 0;
+  display: flex;
+  align-items: flex-start;
+}
+.timeline-item:nth-child(odd) { flex-direction: row-reverse; text-align: right; }
+.timeline-item:nth-child(even) { text-align: left; }
+.timeline-dot {
+  position: absolute; left: 50%;
+  transform: translateX(-50%);
+  width: 14px; height: 14px;
+  background: #ff5a00;
+  border-radius: 50%;
+  border: 3px solid #0a0a0a;
+  z-index: 1;
+  box-shadow: 0 0 15px rgba(255,90,0,0.4);
+}
+.timeline-content {
+  width: calc(50% - 40px);
+  padding: 1.2rem 1.5rem;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  transition: all 0.3s;
+}
+.timeline-content:hover {
+  border-color: rgba(255,90,0,0.3);
+  background: rgba(255,90,0,0.05);
+}
+.timeline-year {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.4rem; font-weight: 700;
+  color: #ff5a00;
+}
+.timeline-desc {
+  font-size: 0.9rem; color: rgba(255,255,255,0.65);
+  margin-top: 0.3rem; line-height: 1.6;
+}
+
+/* ===== MEMBERS SECTION ===== */
+#members { background: linear-gradient(180deg, #0a0a0a 0%, #0f0f0f 100%); }
+.members-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+.member-card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: all 0.5s;
+  background: rgba(255,255,255,0.02);
+}
+.member-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(255,90,0,0.4);
+  box-shadow: 0 20px 60px rgba(255,90,0,0.15);
+}
+.member-visual {
+  height: 320px;
+  display: flex; justify-content: center; align-items: center;
+  font-size: 5rem;
+  position: relative;
+  overflow: hidden;
+}
+.member-card:nth-child(1) .member-visual {
+  background: linear-gradient(135deg, #1a0a00, #2a1200);
+}
+.member-card:nth-child(2) .member-visual {
+  background: linear-gradient(135deg, #0a0a1a, #12122a);
+}
+.member-card:nth-child(3) .member-visual {
+  background: linear-gradient(135deg, #0a1a0a, #122a12);
+}
+.member-spotlight {
+  position: absolute; top: -50%; left: 50%;
+  transform: translateX(-50%);
+  width: 200px; height: 400px;
+  background: radial-gradient(ellipse, rgba(255,90,0,0.1) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+.member-card:hover .member-spotlight { opacity: 1; }
+.member-role-badge {
+  position: absolute; top: 1rem; right: 1rem;
+  padding: 0.3rem 0.8rem;
+  background: rgba(255,90,0,0.9);
+  border-radius: 50px;
+  font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 1px;
+}
+.member-info { padding: 1.5rem 2rem 2rem; }
+.member-name {
+  font-size: 1.6rem; font-weight: 900;
+  margin-bottom: 0.3rem;
+}
+.member-name-en {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.8rem; color: rgba(255,255,255,0.35);
+  letter-spacing: 2px;
+}
+.member-desc {
+  font-size: 0.9rem; color: rgba(255,255,255,0.6);
+  line-height: 1.7; margin-top: 1rem;
+}
+.member-tags {
+  display: flex; flex-wrap: wrap; gap: 0.5rem;
+  margin-top: 1rem;
+}
+.member-tag {
+  padding: 0.2rem 0.7rem;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 50px;
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.5);
+}
+
+/* ===== WORKS SECTION ===== */
+#works { background: #0a0a0a; }
+.works-filter {
+  display: flex; justify-content: center; gap: 1rem;
+  margin-bottom: 3rem; flex-wrap: wrap;
+}
+.filter-btn {
+  padding: 0.5rem 1.5rem;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 50px;
+  background: transparent;
+  color: rgba(255,255,255,0.6);
+  font-size: 0.85rem; font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.filter-btn.active, .filter-btn:hover {
+  border-color: #ff5a00;
+  color: #ff5a00;
+  background: rgba(255,90,0,0.1);
+}
+.works-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+.work-card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.02);
+  transition: all 0.4s;
+  cursor: pointer;
+}
+.work-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255,90,0,0.3);
+}
+.work-poster {
+  height: 200px;
+  display: flex; justify-content: center; align-items: center;
+  font-size: 3rem;
+  position: relative;
+}
+.work-poster-bg {
+  position: absolute; inset: 0;
+  opacity: 0.8;
+}
+.work-card:nth-child(4n+1) .work-poster-bg { background: linear-gradient(135deg, #1a0500, #301005); }
+.work-card:nth-child(4n+2) .work-poster-bg { background: linear-gradient(135deg, #05051a, #101030); }
+.work-card:nth-child(4n+3) .work-poster-bg { background: linear-gradient(135deg, #051a05, #103010); }
+.work-card:nth-child(4n+4) .work-poster-bg { background: linear-gradient(135deg, #1a1a05, #303005); }
+.work-year-badge {
+  position: absolute; top: 0.8rem; left: 0.8rem;
+  padding: 0.2rem 0.6rem;
+  background: rgba(0,0,0,0.7);
+  border: 1px solid rgba(255,90,0,0.5);
+  border-radius: 6px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.75rem; font-weight: 700;
+  color: #ff5a00;
+}
+.work-type-badge {
+  position: absolute; top: 0.8rem; right: 0.8rem;
+  padding: 0.2rem 0.6rem;
+  background: rgba(255,90,0,0.85);
+  border-radius: 6px;
+  font-size: 0.7rem; font-weight: 700;
+}
+.work-title-overlay {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 2rem 1rem 1rem;
+  background: linear-gradient(transparent, rgba(0,0,0,0.9));
+  font-size: 1.3rem; font-weight: 900;
+  letter-spacing: 1px;
+}
+.work-info { padding: 1.2rem 1.5rem; }
+.work-info p {
+  font-size: 0.85rem; color: rgba(255,255,255,0.55);
+  line-height: 1.6;
+}
+.work-tags {
+  display: flex; gap: 0.4rem; margin-top: 0.8rem; flex-wrap: wrap;
+}
+.work-tag {
+  padding: 0.15rem 0.5rem;
+  background: rgba(255,90,0,0.1);
+  border-radius: 4px;
+  font-size: 0.7rem; color: #ff5a00;
+}
+
+/* ===== SHOWS / NEWS SECTION ===== */
+#shows {
+  background: linear-gradient(180deg, #0a0a0a 0%, #111 50%, #0a0a0a 100%);
+}
+.show-featured {
+  padding: 3rem;
+  border: 2px solid rgba(255,90,0,0.3);
+  border-radius: 24px;
+  background: linear-gradient(135deg, rgba(255,90,0,0.05), rgba(255,204,0,0.03));
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+.show-featured::before {
+  content: 'UPCOMING';
+  position: absolute; top: 1rem; right: -2rem;
+  background: #ff5a00;
+  padding: 0.3rem 3rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 3px;
+  transform: rotate(45deg);
+}
+.show-featured h3 {
+  font-size: 2rem; font-weight: 900;
+  margin-bottom: 0.5rem;
+}
+.show-featured .show-date {
+  font-size: 1.1rem; color: #ffcc00; margin-bottom: 0.5rem;
+}
+.show-featured .show-venue {
+  font-size: 0.95rem; color: rgba(255,255,255,0.6);
+  margin-bottom: 1.5rem;
+}
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+.news-card {
+  padding: 1.5rem;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  background: rgba(255,255,255,0.02);
+  transition: all 0.3s;
+}
+.news-card:hover { border-color: rgba(255,90,0,0.3); transform: translateY(-2px); }
+.news-date {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.8rem; color: #ff5a00; margin-bottom: 0.5rem;
+}
+.news-card h4 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+.news-card p {
+  font-size: 0.85rem; color: rgba(255,255,255,0.5);
+  line-height: 1.6;
+}
+
+/* ===== MEDIA SECTION ===== */
+#media { background: #0a0a0a; }
+.media-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1.5rem;
+}
+.media-video {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: all 0.3s;
+  background: rgba(255,255,255,0.02);
+}
+.media-video:hover { border-color: rgba(255,90,0,0.3); }
+.video-placeholder {
+  height: 200px;
+  background: linear-gradient(135deg, #1a1a1a, #222);
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  position: relative;
+}
+.play-btn {
+  width: 60px; height: 60px;
+  border-radius: 50%;
+  background: rgba(255,90,0,0.9);
+  display: flex; justify-content: center; align-items: center;
+  font-size: 1.5rem;
+  transition: all 0.3s;
+  box-shadow: 0 4px 25px rgba(255,90,0,0.3);
+}
+.media-video:hover .play-btn {
+  transform: scale(1.1);
+  box-shadow: 0 8px 35px rgba(255,90,0,0.5);
+}
+.video-title { padding: 1rem 1.5rem; font-weight: 700; }
+
+/* ===== PRESS / GALLERY ===== */
+.press-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-top: 3rem;
+}
+.press-card {
+  padding: 1.2rem;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  background: rgba(255,255,255,0.02);
+  transition: all 0.3s;
+}
+.press-card:hover { border-color: rgba(255,90,0,0.3); }
+.press-source {
+  font-size: 0.75rem; color: #ff5a00; font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+.press-card h4 { font-size: 0.95rem; line-height: 1.4; }
+
+/* ===== CONTACT SECTION ===== */
+#contact { background: linear-gradient(180deg, #0a0a0a 0%, #111 100%); }
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+.contact-info h3 {
+  font-size: 1.5rem; margin-bottom: 1.5rem; color: #ff5a00;
+}
+.contact-info p {
+  font-size: 1rem; color: rgba(255,255,255,0.65);
+  line-height: 1.8; margin-bottom: 1rem;
+}
+.contact-email {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-size: 1.1rem; font-weight: 700;
+  color: #ffcc00;
+  margin: 1rem 0;
+}
+.social-links {
+  display: flex; gap: 1rem; margin-top: 1.5rem;
+}
+.social-link {
+  width: 48px; height: 48px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.15);
+  display: flex; justify-content: center; align-items: center;
+  font-size: 1.2rem;
+  transition: all 0.3s;
+  background: rgba(255,255,255,0.03);
+}
+.social-link:hover {
+  border-color: #ff5a00;
+  background: rgba(255,90,0,0.1);
+  transform: translateY(-2px);
+}
+.contact-form {
+  display: flex; flex-direction: column; gap: 1rem;
+}
+.form-row { display: flex; gap: 1rem; }
+.form-input, .form-textarea {
+  width: 100%;
+  padding: 1rem 1.2rem;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 12px;
+  color: #f0f0f0;
+  font-size: 0.95rem;
+  font-family: inherit;
+  transition: all 0.3s;
+  outline: none;
+}
+.form-input:focus, .form-textarea:focus {
+  border-color: #ff5a00;
+  background: rgba(255,90,0,0.05);
+}
+.form-textarea { min-height: 140px; resize: vertical; }
+.form-input::placeholder, .form-textarea::placeholder {
+  color: rgba(255,255,255,0.3);
+}
+
+/* ===== FOOTER ===== */
+footer {
+  padding: 3rem 2rem 2rem;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  text-align: center;
+}
+.footer-logo {
+  font-size: 1.2rem; font-weight: 900;
+  background: linear-gradient(135deg, #ff5a00, #ffcc00);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
+}
+.footer-text {
+  font-size: 0.8rem; color: rgba(255,255,255,0.3);
+}
+.footer-easter {
+  margin-top: 1rem;
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.15);
+  cursor: pointer;
+  transition: all 0.5s;
+}
+.footer-easter:hover {
+  color: #ff5a00;
+  transform: scale(1.05);
+}
+.footer-easter.activated {
+  color: #ffcc00;
+  font-size: 1rem;
+  animation: shake 0.5s;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(10px); }
+}
+@keyframes scrollDot {
+  0% { top: 6px; opacity: 1; }
+  100% { top: 20px; opacity: 0; }
+}
+@keyframes shake {
+  0%, 100% { transform: rotate(0); }
+  25% { transform: rotate(-5deg); }
+  75% { transform: rotate(5deg); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-on-scroll {
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.animate-on-scroll.visible {
+  opacity: 1; transform: translateY(0);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .members-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .timeline-track::before { left: 20px; }
+  .timeline-item, .timeline-item:nth-child(odd) {
+    flex-direction: row; text-align: left;
+  }
+  .timeline-dot { left: 20px; }
+  .timeline-content { width: calc(100% - 60px); margin-left: 50px; }
+  .form-row { flex-direction: column; }
+  .hero-curtain-left, .hero-curtain-right { width: 40px; }
+}
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  section { padding: 4rem 1.5rem; }
+  .media-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- Cursor Spotlight -->
+<div class="cursor-spotlight" id="spotlight"></div>
+
+<!-- Navigation -->
+<nav id="navbar">
+  <div class="nav-logo">嚎哮排演</div>
+  <ul class="nav-links">
+    <li><a href="#about">關於</a></li>
+    <li><a href="#members">成員</a></li>
+    <li><a href="#works">作品</a></li>
+    <li><a href="#shows">演出</a></li>
+    <li><a href="#media">影音</a></li>
+    <li><a href="#contact">聯絡</a></li>
+  </ul>
+  <button class="hamburger" id="hamburgerBtn" aria-label="開啟選單">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMobile()">關於</a>
+  <a href="#members" onclick="closeMobile()">成員</a>
+  <a href="#works" onclick="closeMobile()">作品</a>
+  <a href="#shows" onclick="closeMobile()">演出</a>
+  <a href="#media" onclick="closeMobile()">影音</a>
+  <a href="#contact" onclick="closeMobile()">聯絡</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-curtain-left"></div>
+  <div class="hero-curtain-right"></div>
+  <div class="hero-content">
+    <div class="hero-badge">2025 TAIWAN TOP 演藝團隊</div>
+    <h1 class="hero-title-zh">嚎哮排演</h1>
+    <p class="hero-title-en">HAOXHSIAO TROUPE</p>
+    <p class="hero-tagline">全台灣最接近頂尖<em>（自稱）</em>的喜劇團體</p>
+    <div class="hero-cta">
+      <a href="#shows" class="btn btn-primary">最新演出</a>
+      <a href="#about" class="btn btn-outline">認識我們</a>
+    </div>
+  </div>
+  <div class="hero-scroll-hint"><span></span></div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-container">
+    <div class="section-header animate-on-scroll">
+      <p class="section-label">About Us</p>
+      <h2 class="section-title">我們的故事</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-story animate-on-scroll">
+        <h3>一切始於一堂「排演」課</h3>
+        <p>2011年，在國立台北藝術大學研究所裡，有一堂叫做「排演」的課。黃建豪與蕭東意為了通過學分，匆忙報名了台北藝穗節。</p>
+        <p>團名？報名截止當天，在前往繳交報名表的車上才臨時想出來的——黃建「豪」與「蕭」東意的「排演」課，就是「嚎哮排演」。</p>
+        <p>誰也沒想到，這個趕死線產物的名字，會成為台灣喜劇界最響亮的招牌之一。</p>
+        <h3 style="margin-top:2rem">用喜劇包裝悲劇</h3>
+        <p>「我們其實是用喜劇形式，包裝發生在生活中的悲劇。」人近看是場悲劇、遠看是場喜劇——這就是嚎哮排演十多年來不變的創作核心。</p>
+      </div>
+      <div class="principles animate-on-scroll">
+        <h3 style="font-size:1.3rem; margin-bottom:1rem; color:rgba(255,255,255,0.9);">三大原則</h3>
+        <div class="principle-card">
+          <div class="principle-num">01</div>
+          <div class="principle-text">說好笑的故事、作好玩的戲</div>
+        </div>
+        <div class="principle-card">
+          <div class="principle-num">02</div>
+          <div class="principle-text">題材尺度不設限</div>
+        </div>
+        <div class="principle-card">
+          <div class="principle-num">03</div>
+          <div class="principle-text">不以劇場作為唯一的創作領域</div>
+        </div>
+        <div style="margin-top:1rem;">
+          <p style="font-size:0.9rem; color:rgba(255,255,255,0.5); font-style:italic; line-height:1.6;">
+            「限制創造藝術，我們很明確知道自己的限制在哪裡，就是盡情在這個框架裡去玩。」——黃建豪
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Style Features -->
+    <div class="style-grid animate-on-scroll">
+      <div class="style-card">
+        <div class="style-icon">&#127917;</div>
+        <h4>鬆散與精準</h4>
+        <p>傳統戲曲「做活戲」的趣味，搭配扎實劇場訓練的爆發力</p>
+      </div>
+      <div class="style-card">
+        <div class="style-icon">&#128172;</div>
+        <h4>諧音哏宇宙</h4>
+        <p>充斥文字遊戲與諧音哏，完全是兩位主演的個性使然</p>
+      </div>
+      <div class="style-card">
+        <div class="style-icon">&#9889;</div>
+        <h4>高度即興</h4>
+        <p>正式演出仍保留大量即興空間，每場都是無法複製的現場驚喜</p>
+      </div>
+      <div class="style-card">
+        <div class="style-icon">&#127914;</div>
+        <h4>悲喜交融</h4>
+        <p>用喜劇包裝悲劇，在笑聲中讓觀眾短暫忘卻現實煩憂</p>
+      </div>
+      <div class="style-card">
+        <div class="style-icon">&#127922;</div>
+        <h4>玩的精神</h4>
+        <p>從創團第一天就帶著玩票心態，玩樂背後是真實的人生體悟</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section id="timeline">
+  <div class="section-container">
+    <div class="section-header animate-on-scroll">
+      <p class="section-label">Milestones</p>
+      <h2 class="section-title">嚎哮年表</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="timeline-track">
+      <div class="timeline-item animate-on-scroll">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-year">2011</div>
+          <div class="timeline-desc">台北藝穗節首演《啞侍．改》，嚎哮排演誕生</div>
+        </div>
+      </div>
+      <div class="timeline-item animate-on-scroll">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-year">2012</div>
+          <div class="timeline-desc">《即刻相親》榮獲藝穗節「最佳場地運用獎」</div>
+        </div>
+      </div>
+      <div class="timeline-item animate-on-scroll">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-year">2014</div>
+          <div class="timeline-desc">正式登記為台中市立案演藝團隊</div>
+        </div>
+      </div>
+      <div class="timeline-item animate-on-scroll">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-year">2015</div>
+          <div class="timeline-desc">編劇王健任加入，三人核心團隊成形</div>
+        </div>
+      </div>
+      <div class="timeline-item animate-on-scroll">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-year">2016</div>
+          <div class="timeline-desc">《兇宅》系列啟動，成為嚎哮經典 IP</div>
+        </div>
+      </div>
+      <div class="timeline-item animate-on-scroll">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-year">2020</div>
+          <div class="timeline-desc">《幕後七日》好評完售加演</div>
+        </div>
+      </div>
+      <div class="timeline-item animate-on-scroll">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-year">2021</div>
+          <div class="timeline-desc">十週年「嚎哮嘉年華」，「匿名者」系列網路爆紅</div>
+        </div>
+      </div>
+      <div class="timeline-item animate-on-scroll">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-year">2023</div>
+          <div class="timeline-desc">《幕後七日》獲國家兩廳院委託製作</div>
+        </div>
+      </div>
+      <div class="timeline-item animate-on-scroll">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-year">2024</div>
+          <div class="timeline-desc">台語饒舌音樂劇《別叫我成功》臺中歌劇院首演</div>
+        </div>
+      </div>
+      <div class="timeline-item animate-on-scroll">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-year">2025</div>
+          <div class="timeline-desc">入選國藝會 TAIWAN TOP 演藝團隊，黃建豪擔任歌劇院駐館藝術家</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MEMBERS -->
+<section id="members">
+  <div class="section-container">
+    <div class="section-header animate-on-scroll">
+      <p class="section-label">Members</p>
+      <h2 class="section-title">核心成員</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="members-grid">
+      <!-- 黃建豪 -->
+      <div class="member-card animate-on-scroll">
+        <div class="member-visual">
+          <div class="member-spotlight"></div>
+          <span style="opacity:0.15; font-size:8rem; font-weight:900; color:#ff5a00;">豪</span>
+          <div class="member-role-badge">團長</div>
+        </div>
+        <div class="member-info">
+          <h3 class="member-name">黃建豪</h3>
+          <p class="member-name-en">HUANG CHIEN-HAO</p>
+          <p class="member-desc">
+            嚎哮排演的靈魂人物。北藝大劇場藝術創作研究所出身，身兼演員與導演。
+            在鬆散與精準之間切換自如，讓觀眾在爆笑中感受到紮實的表演功底。
+            2025–2026年擔任臺中國家歌劇院駐館藝術家。
+          </p>
+          <div class="member-tags">
+            <span class="member-tag">演員</span>
+            <span class="member-tag">導演</span>
+            <span class="member-tag">歌劇院駐館藝術家</span>
+            <span class="member-tag">金片子得獎</span>
+          </div>
+        </div>
+      </div>
+      <!-- 蕭東意 -->
+      <div class="member-card animate-on-scroll">
+        <div class="member-visual">
+          <div class="member-spotlight"></div>
+          <span style="opacity:0.15; font-size:8rem; font-weight:900; color:#4488ff;">蕭</span>
+          <div class="member-role-badge">創意總監</div>
+        </div>
+        <div class="member-info">
+          <h3 class="member-name">蕭東意</h3>
+          <p class="member-name-en">HSIAO TUNG-YI</p>
+          <p class="member-desc">
+            劇場界人稱「東哥」。跨足舞台劇、電視、電影的全方位演員。
+            善於模仿日本腔、越南腔、韓國腔等各國口音，2021年以「匿名者」系列影片在網路爆紅，
+            成為疫情時代的全民笑點。
+          </p>
+          <div class="member-tags">
+            <span class="member-tag">創意總監</span>
+            <span class="member-tag">演員</span>
+            <span class="member-tag">口音模仿大師</span>
+            <span class="member-tag">匿名者爆紅</span>
+          </div>
+        </div>
+      </div>
+      <!-- 王健任 -->
+      <div class="member-card animate-on-scroll">
+        <div class="member-visual">
+          <div class="member-spotlight"></div>
+          <span style="opacity:0.15; font-size:8rem; font-weight:900; color:#44cc44;">任</span>
+          <div class="member-role-badge">駐團編劇</div>
+        </div>
+        <div class="member-info">
+          <h3 class="member-name">王健任</h3>
+          <p class="member-name-en">WANG CHIEN-JEN</p>
+          <p class="member-desc">
+            2015年加入嚎哮排演的文字魔術師。身兼編劇與導演，
+            擅長從苦澀人生中提煉慰藉，透過角色的自嘲與荒誕，
+            讓觀眾在笑聲中短暫忘卻現實的煩憂。
+          </p>
+          <div class="member-tags">
+            <span class="member-tag">編劇</span>
+            <span class="member-tag">導演</span>
+            <span class="member-tag">故事建築師</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORKS -->
+<section id="works">
+  <div class="section-container">
+    <div class="section-header animate-on-scroll">
+      <p class="section-label">Works</p>
+      <h2 class="section-title">作品</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="works-filter animate-on-scroll">
+      <button class="filter-btn active" data-filter="all">全部</button>
+      <button class="filter-btn" data-filter="series">經典系列</button>
+      <button class="filter-btn" data-filter="classic">經典破壞</button>
+      <button class="filter-btn" data-filter="stage">劇場原創</button>
+      <button class="filter-btn" data-filter="video">影像作品</button>
+    </div>
+    <div class="works-grid" id="worksGrid">
+      <!-- 兇宅系列 -->
+      <div class="work-card animate-on-scroll" data-category="series">
+        <div class="work-poster">
+          <div class="work-poster-bg"></div>
+          <span style="position:relative;z-index:1;opacity:0.3;">&#127978;</span>
+          <div class="work-year-badge">2016–2025</div>
+          <div class="work-type-badge">經典系列</div>
+          <div class="work-title-overlay">兇宅 系列</div>
+        </div>
+        <div class="work-info">
+          <p>嚎哮排演最具代表性的台式情境喜劇。從2016年首演至今不斷進化，含《兇宅》、《兇宅II》、《兇宅III：終菊之戰》及網路劇版本。2025年推出《兇宅嘉年華：雙戲連映》。</p>
+          <div class="work-tags">
+            <span class="work-tag">情境喜劇</span>
+            <span class="work-tag">多季連演</span>
+            <span class="work-tag">網路劇</span>
+          </div>
+        </div>
+      </div>
+      <!-- 即刻相親 -->
+      <div class="work-card animate-on-scroll" data-category="series">
+        <div class="work-poster">
+          <div class="work-poster-bg"></div>
+          <span style="position:relative;z-index:1;opacity:0.3;">&#128152;</span>
+          <div class="work-year-badge">2012–</div>
+          <div class="work-type-badge">經典系列</div>
+          <div class="work-title-overlay">即刻相親 系列</div>
+        </div>
+        <div class="work-info">
+          <p>藝穗節得獎作品。相親變成飢餓遊戲，誰能撐到最後？包含《即刻相親 Dumb Lover》（藝穗節最佳場地運用獎）、《即刻相親—逆襲的亡靈》等。</p>
+          <div class="work-tags">
+            <span class="work-tag">藝穗節得獎</span>
+            <span class="work-tag">互動喜劇</span>
+          </div>
+        </div>
+      </div>
+      <!-- 別叫我成功 -->
+      <div class="work-card animate-on-scroll" data-category="stage">
+        <div class="work-poster">
+          <div class="work-poster-bg"></div>
+          <span style="position:relative;z-index:1;opacity:0.3;">&#127908;</span>
+          <div class="work-year-badge">2024–2025</div>
+          <div class="work-type-badge">音樂劇</div>
+          <div class="work-title-overlay">別叫我成功：藝術界歸來的兒子</div>
+        </div>
+        <div class="work-info">
+          <p>嚎哮排演首次跨界台語饒舌音樂劇！以鄭成功為靈感，融合宮廟、黑道、表藝圈元素。歷經五年打磨，2024臺中歌劇院首演，2025北藝中心連演8場。</p>
+          <div class="work-tags">
+            <span class="work-tag">台語饒舌</span>
+            <span class="work-tag">音樂劇</span>
+            <span class="work-tag">歌劇院</span>
+          </div>
+        </div>
+      </div>
+      <!-- 幕後七日 -->
+      <div class="work-card animate-on-scroll" data-category="stage">
+        <div class="work-poster">
+          <div class="work-poster-bg"></div>
+          <span style="position:relative;z-index:1;opacity:0.3;">&#127916;</span>
+          <div class="work-year-badge">2020–2023</div>
+          <div class="work-type-badge">兩廳院委製</div>
+          <div class="work-title-overlay">幕後七日</div>
+        </div>
+        <div class="work-info">
+          <p>一窺劇場幕後大小事。從故事發想、試鏡、排練到正式演出，笑中帶淚的劇場人日常。2020年好評完售加演，2023年獲國家兩廳院委託製作。</p>
+          <div class="work-tags">
+            <span class="work-tag">兩廳院委製</span>
+            <span class="work-tag">好評加演</span>
+          </div>
+        </div>
+      </div>
+      <!-- 太空救援 -->
+      <div class="work-card animate-on-scroll" data-category="classic">
+        <div class="work-poster">
+          <div class="work-poster-bg"></div>
+          <span style="position:relative;z-index:1;opacity:0.3;">&#128640;</span>
+          <div class="work-year-badge">2018</div>
+          <div class="work-type-badge">經典破壞</div>
+          <div class="work-title-overlay">太空救援：果頭計畫</div>
+        </div>
+        <div class="work-info">
+          <p>嚎哮式解構經典！啟發自貝克特《等待果陀》，把荒謬劇搬上太空，用嚎哮的方式重新詮釋存在主義的永恆等待。</p>
+          <div class="work-tags">
+            <span class="work-tag">經典改編</span>
+            <span class="work-tag">等待果陀</span>
+          </div>
+        </div>
+      </div>
+      <!-- 啞侍 -->
+      <div class="work-card animate-on-scroll" data-category="classic">
+        <div class="work-poster">
+          <div class="work-poster-bg"></div>
+          <span style="position:relative;z-index:1;opacity:0.3;">&#127860;</span>
+          <div class="work-year-badge">2011–2021</div>
+          <div class="work-type-badge">經典破壞</div>
+          <div class="work-title-overlay">啞侍改了一改再改</div>
+        </div>
+        <div class="work-info">
+          <p>嚎哮排演的起點。啟發自乒特的《食物升降機》（The Dumb Waiter），從首演到十週年持續翻新，見證嚎哮排演的成長軌跡。</p>
+          <div class="work-tags">
+            <span class="work-tag">創團作品</span>
+            <span class="work-tag">食物升降機</span>
+          </div>
+        </div>
+      </div>
+      <!-- 全家都去你家 -->
+      <div class="work-card animate-on-scroll" data-category="stage">
+        <div class="work-poster">
+          <div class="work-poster-bg"></div>
+          <span style="position:relative;z-index:1;opacity:0.3;">&#127968;</span>
+          <div class="work-year-badge">2014</div>
+          <div class="work-type-badge">原創</div>
+          <div class="work-title-overlay">全家都去你家</div>
+        </div>
+        <div class="work-info">
+          <p>藝穗節原創作品，嚎哮排演標誌性的生活喜劇。2021年十週年嘉年華再度登場，依然讓觀眾笑到不行。</p>
+          <div class="work-tags">
+            <span class="work-tag">藝穗節</span>
+            <span class="work-tag">生活喜劇</span>
+          </div>
+        </div>
+      </div>
+      <!-- 匿名者系列 -->
+      <div class="work-card animate-on-scroll" data-category="video">
+        <div class="work-poster">
+          <div class="work-poster-bg"></div>
+          <span style="position:relative;z-index:1;opacity:0.3;">&#128247;</span>
+          <div class="work-year-badge">2021</div>
+          <div class="work-type-badge">影像</div>
+          <div class="work-title-overlay">匿名者 系列</div>
+        </div>
+        <div class="work-info">
+          <p>疫情期間的全民笑料！YouTube「匿名者」系列影片，包括爆紅的「匿名者6 端午不返鄉」、「匿名者9 微解封？」等，讓嚎哮排演一夜之間突破劇場圈。</p>
+          <div class="work-tags">
+            <span class="work-tag">YouTube</span>
+            <span class="work-tag">疫情爆紅</span>
+            <span class="work-tag">短片</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SHOWS / NEWS -->
+<section id="shows">
+  <div class="section-container">
+    <div class="section-header animate-on-scroll">
+      <p class="section-label">Shows & News</p>
+      <h2 class="section-title">演出與最新消息</h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <!-- Featured Show -->
+    <div class="show-featured animate-on-scroll">
+      <h3>《兇宅》嘉年華：雙戲連映，雙喜臨門</h3>
+      <p class="show-date">2025 年演出中</p>
+      <p class="show-venue">詳情請關注嚎哮排演社群媒體</p>
+      <a href="https://www.instagram.com/haoxhsiao/" target="_blank" class="btn btn-primary" style="margin-top:0.5rem;">前往了解</a>
+    </div>
+
+    <!-- News Cards -->
+    <div class="news-grid">
+      <div class="news-card animate-on-scroll">
+        <p class="news-date">2025</p>
+        <h4>入選國藝會 TAIWAN TOP 演藝團隊</h4>
+        <p>嚎哮排演獲選為2025年國藝會TAIWAN TOP演藝團隊，肯定了十多年來在喜劇領域的深耕與創新。</p>
+      </div>
+      <div class="news-card animate-on-scroll">
+        <p class="news-date">2025</p>
+        <h4>《別叫我成功》臺北表演藝術中心連演8場</h4>
+        <p>台語饒舌音樂劇《別叫我成功：藝術界歸來的兒子》登上北藝中心，連演八場盛況空前。</p>
+      </div>
+      <div class="news-card animate-on-scroll">
+        <p class="news-date">2025–2026</p>
+        <h4>黃建豪獲選臺中國家歌劇院駐館藝術家</h4>
+        <p>團長黃建豪受邀擔任2025–2026年度臺中國家歌劇院駐館藝術家，持續探索喜劇的更多可能。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MEDIA -->
+<section id="media">
+  <div class="section-container">
+    <div class="section-header animate-on-scroll">
+      <p class="section-label">Media</p>
+      <h2 class="section-title">影音專區</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="media-grid">
+      <div class="media-video animate-on-scroll">
+        <div class="video-placeholder">
+          <div class="play-btn">&#9654;</div>
+          <p style="font-size:0.8rem; color:rgba(255,255,255,0.4); margin-top:0.5rem;">YouTube 影片</p>
+        </div>
+        <div class="video-title">匿名者6 — 端午不返鄉，來學點英文吧！</div>
+      </div>
+      <div class="media-video animate-on-scroll">
+        <div class="video-placeholder">
+          <div class="play-btn">&#9654;</div>
+          <p style="font-size:0.8rem; color:rgba(255,255,255,0.4); margin-top:0.5rem;">YouTube 影片</p>
+        </div>
+        <div class="video-title">匿名者9 — 微解封？</div>
+      </div>
+      <div class="media-video animate-on-scroll">
+        <div class="video-placeholder">
+          <div class="play-btn">&#9654;</div>
+          <p style="font-size:0.8rem; color:rgba(255,255,255,0.4); margin-top:0.5rem;">YouTube 影片</p>
+        </div>
+        <div class="video-title">嚎哮排演 演出精華</div>
+      </div>
+    </div>
+
+    <!-- Press -->
+    <h3 style="text-align:center; margin-top:4rem; margin-bottom:1.5rem; font-size:1.3rem;" class="animate-on-scroll">媒體報導</h3>
+    <div class="press-grid">
+      <a href="https://www.biosmonthly.com/article/11642" target="_blank" class="press-card animate-on-scroll">
+        <p class="press-source">BIOS Monthly</p>
+        <h4>好笑是真好笑，痛苦也是真痛苦──專訪嚎哮排演</h4>
+      </a>
+      <a href="https://www.qaf.org.tw/media.php?act=view&id=786" target="_blank" class="press-card animate-on-scroll">
+        <p class="press-source">廣藝基金會</p>
+        <h4>黃建豪、蕭東意喜劇節奏大爆發 嚎哮排演雙戲連映嗨翻劇場</h4>
+      </a>
+      <a href="https://par.npac-ntch.org/tw/article/doc/HB8GL72OEY" target="_blank" class="press-card animate-on-scroll">
+        <p class="press-source">PAR 表演藝術雜誌</p>
+        <h4>黃建豪 — 不是那麼「成功」，還是繼續「嚎哮」</h4>
+      </a>
+      <a href="https://medium.com/taipeifringer/%E8%97%9D%E7%A9%97%E5%8D%81%E5%B9%B4-%E8%A8%AA%E8%AB%87%E8%A8%88%E7%95%AB-%E6%B8%AC%E8%A9%A6%E9%A0%81%E9%9D%A2-7b1362815ee6" target="_blank" class="press-card animate-on-scroll">
+        <p class="press-source">臺北藝穗節</p>
+        <h4>Fringer人物線上誌 —「嚎哮排演」</h4>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-container">
+    <div class="section-header animate-on-scroll">
+      <p class="section-label">Contact</p>
+      <h2 class="section-title">聯絡我們</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info animate-on-scroll">
+        <h3>演出邀約 / 商業合作</h3>
+        <p>
+          不管是演出邀約、商業合作、媒體採訪，或只是想跟我們說聲「你們真的很好笑」，都歡迎來信！
+        </p>
+        <div class="contact-email">
+          &#9993;&nbsp; HaoxHsiaoTroupe@gmail.com
+        </div>
+        <p style="font-size:0.9rem; color:rgba(255,255,255,0.5);">
+          也可以透過社群媒體私訊我們：
+        </p>
+        <div class="social-links">
+          <a href="https://www.instagram.com/haoxhsiao/" target="_blank" class="social-link" title="Instagram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg>
+          </a>
+          <a href="https://www.youtube.com/@haoxhsiao" target="_blank" class="social-link" title="YouTube">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.43z"/><polygon points="9.75,15.02 15.5,11.75 9.75,8.48"/></svg>
+          </a>
+          <a href="https://www.facebook.com/haoxhsiao" target="_blank" class="social-link" title="Facebook">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+        </div>
+      </div>
+      <form class="contact-form animate-on-scroll" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <input class="form-input" type="text" placeholder="您的姓名" required>
+          <input class="form-input" type="email" placeholder="電子信箱" required>
+        </div>
+        <input class="form-input" type="text" placeholder="主旨">
+        <textarea class="form-textarea" placeholder="請輸入您的訊息..." required></textarea>
+        <button type="submit" class="btn btn-primary" style="align-self:flex-start;">送出訊息</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">嚎哮排演 HAOXHSIAO TROUPE</div>
+  <p class="footer-text">&copy; 2025 嚎哮排演 HaoxHsiaoTroupe. All Rights Reserved.</p>
+  <p class="footer-easter" id="easterEgg" onclick="triggerEasterEgg()">
+    &#127917; 點我看看會發生什麼事
+  </p>
+</footer>
+
+<script>
+// ===== Cursor Spotlight =====
+const spotlight = document.getElementById('spotlight');
+document.addEventListener('mousemove', (e) => {
+  spotlight.style.left = e.clientX + 'px';
+  spotlight.style.top = e.clientY + 'px';
+});
+
+// ===== Navbar Scroll =====
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// ===== Mobile Menu =====
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburgerBtn.addEventListener('click', () => {
+  mobileMenu.classList.toggle('active');
+});
+function closeMobile() {
+  mobileMenu.classList.remove('active');
+}
+
+// ===== Scroll Animations =====
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+// ===== Works Filter =====
+const filterBtns = document.querySelectorAll('.filter-btn');
+const workCards = document.querySelectorAll('.work-card');
+
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter;
+    workCards.forEach(card => {
+      if (filter === 'all' || card.dataset.category === filter) {
+        card.style.display = '';
+        card.style.animation = 'fadeIn 0.4s ease-out';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+});
+
+// ===== Easter Egg =====
+const easterMessages = [
+  '「全台灣最接近頂尖（自稱）的喜劇團體」向你致意！',
+  '恭喜你發現了嚎哮彩蛋！買票看戲去吧！',
+  '蕭東意的日本腔：「すみません、チケットください！」',
+  '黃建豪表示：限制創造藝術！',
+  '王健任正在後台寫新的諧音哏...',
+  '你已經被嚎哮排演圈粉了，承認吧！'
+];
+let easterIndex = 0;
+function triggerEasterEgg() {
+  const el = document.getElementById('easterEgg');
+  el.textContent = easterMessages[easterIndex % easterMessages.length];
+  el.classList.add('activated');
+  easterIndex++;
+  setTimeout(() => {
+    el.classList.remove('activated');
+    el.textContent = '\u{1F3AD} 再點一次？';
+  }, 2500);
+}
+
+// ===== Form Submit =====
+function handleSubmit(e) {
+  e.preventDefault();
+  alert('感謝您的訊息！嚎哮排演會盡快回覆。（此為展示功能）');
+  e.target.reset();
+}
+</script>
+</body>
+</html>
